@@ -1,0 +1,137 @@
+{% include "header.html" %}
+{% block body %}
+          <div class="row align-items-center py-4">
+         &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/profile" class="aaa" style="color: #5fcf80;"><i class="bx bx-home"></i><strong>Accueil</strong></a></li>
+                  <li class="breadcrumb-item"><a href="/bloque" class="aaa" style="color: #5fcf80;"><strong> Gestion des utilisateurs bloqués</strong></a></li>
+                </ol>
+        </div>
+  <br>
+ <section class="d-flex justify-content-center align-items-center">
+<div class="container">
+
+    <div class="row">
+
+        <div class="col md-12">
+
+            <h2>Liste des utilisateurs bloqués </h2>
+
+
+
+
+    {%with messages = get_flashed_messages()%}
+
+    {%if messages%}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success alert-dismissable" role="alert">
+
+     <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+
+         <span aria-hidden="true">&times;</span>
+
+     </button>
+        {{message}}
+
+
+    </div>
+
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+
+
+
+            <table class="table table-striped">
+
+
+                <tr>
+              <th>CIN</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+
+
+          </tr>
+
+
+
+
+
+                {% for row in prof %}
+                <tr>
+                    <td>{{row.0}}</td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.4}}</td>
+                    <td>
+
+
+                <a href="/unblock/{{ row.0 }}" class="btn btn-xs" onclick="return confirm('êtes-vous sûr de débloquer cet utilisateur?')"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+                    </td>
+
+                </tr>
+
+
+
+
+                {% endfor  %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+</div></div>
+  </section>
+  <main id="main">
+  </main>
+  <br><br><br><br><br><br>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <header id="header" class="d-flex flex-column justify-content-center"></header>
+
+    <footer id="footer">
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Education</span></strong>. All Rights Reserved
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://twitter.com/jouhainaa_nasri" class="twitter"  style="background: #5fcf80;"><i class="bx bxl-twitter" ></i></a>
+        <a href="https://www.facebook.com/maite.perroni1234" class="facebook"  style="background: #5fcf80;"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/jouhainaa_nasri1/" class="instagram"  style="background: #5fcf80;"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/jouhaina-nasri-3b9442168/" class="linkedin"  style="background: #5fcf80;"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top" style="background: #5fcf80;"><i class="bx bx-up-arrow-alt"></i></a>
+  <div id="preloader"></div>
+{% endblock %}
+  <!-- Vendor JS Files -->
+
+  <script src="{{ url_for('static',filename='assets1/vendor/jquery/jquery.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/jquery.easing/jquery.easing.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/php-email-form/validate.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/waypoints/jquery.waypoints.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/counterup/counterup.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/isotope-layout/isotope.pkgd.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/venobox/venobox.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/owl.carousel/owl.carousel.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/typed.js/typed.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/aos/aos.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/js/main.js') }}"> </script>

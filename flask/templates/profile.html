@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Gestion des notes</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link rel="icon" href="{{ url_for('static', filename='assets1/img/favicon.png') }}">
+
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets1/img/apple-touch-icon.png') }}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/bootstrap/css/bootstrap.min.css') }}">  
+
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/icofont/icofont.min.css') }}">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/boxicons/css/boxicons.min.css') }}">
+
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/venobox/venobox.css') }}">
+
+
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/owl.carousel/assets/owl.carousel.min.css') }}">  
+
+
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/vendor/aos/aos.css') }}">
+
+
+  <!-- Template Main CSS File -->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='assets1/css/style.css') }}">
+
+<style>
+a {
+  color: #5fcf80;
+}
+
+a:hover {
+  color: #86db9f;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  display: none;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+}
+
+.back-to-top i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background: #5fcf80;
+  color: #fff;
+  transition: all 0.4s;
+}
+
+.back-to-top i:hover {
+  background: #3ac162;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #5fcf80;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  color: #37423b;
+  font-size: 14px;
+  background: #eef0ef;
+}
+
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+  background: #f9faf9;
+}
+
+#footer .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-contact h4 {
+  font-size: 22px;
+  margin: 0 0 30px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+#footer .footer-top .footer-contact p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Raleway", sans-serif;
+  color: #777777;
+}
+
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #5fcf80;
+  font-size: 18px;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #777777;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  text-decoration: none;
+  color: #5fcf80;
+}
+
+#footer .footer-newsletter {
+  font-size: 15px;
+}
+
+#footer .footer-newsletter h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-newsletter form {
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  text-align: left;
+  border: 1px solid #e0e5e2;
+}
+
+#footer .footer-newsletter form input[type="email"] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+
+#footer .footer-newsletter form input[type="submit"] {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px 2px 20px;
+  background: #5fcf80;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#footer .footer-newsletter form input[type="submit"]:hover {
+  background: #3ac162;
+}
+
+#footer .credits {
+  padding-top: 5px;
+  font-size: 13px;
+}
+
+#footer .credits a {
+  color: #3ac162;
+  transition: 0.3s;
+}
+
+#footer .credits a:hover {
+  color: #5fcf80;
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #5fcf80;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background: #3ac162;
+  color: #fff;
+  text-decoration: none;
+}
+
+#hero .container {
+  padding-top: 72px;
+}
+
+@media (max-width: 992px) {
+  #hero .container {
+    padding-top: 62px;
+  }
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero h2 {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
+
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    height: 100vh;
+  }
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+
+
+</style>
+</head>
+
+<body>
+ <header id="header" class="fixed-top">
+
+      <nav class="nav-menu d-none d-lg-block">
+       
+      </nav><!-- .nav-menu -->
+      
+  </header>
+
+    <header id="header" class="d-flex flex-column justify-content-center fixed-top">
+<br><br>
+{% if user == 'admin' %}
+    <nav class="nav-menu"   style="width: 20%; margin-left: 20px;">
+      <ul>
+        <li class="active"><a href="/profile" style="background: #5fcf80;"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+        <li><a href="/manage_user" style="background: #5fcf80;"><i class="bx bx-user"></i> <span>Gestion des utilisateurs</span></a></li>
+        <li><a href="/bloque" style="background: #5fcf80;"><i class="bx bx-user"></i> <span>Gestion des utilisateurs bloqués</span></a></li>
+        <li><a href="/etudiant" style="background: #5fcf80;"><i class="fa fa-institution"></i> <span>Gestion de classe</span></a></li>
+        <li><a href="/module" style="background: #5fcf80;"><i class="fa fa-copy"></i> <span>Gestion de module</span></a></li>
+        <li><a href="/matiere" style="background: #5fcf80;"><i class="fa fa-book"></i> <span>Gestion de matieres</span></a></li>
+         <li><a href="/note" style="background: #5fcf80;"><i class="fa fa-clipboard"></i> <span>Gestion de note</span></a></li>
+          <li><a href="/resultat" style="background: #5fcf80;"><i class="fa fa-mortar-board"></i> <span>Gestion de Résultat</span></a></li>
+         <li><a href="/logout" style="background: #5fcf80;"><i class="fa fa-sign-out"></i> <span>Déconnecter</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+{% endif %}
+
+{% if user == 'prof' %}
+    <nav class="nav-menu" style="width: 20%;margin-left: 20px;">
+      <ul>
+        <li class="active"><a href="/profile" style="background: #5fcf80;"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+        <li><a href="/manage_user" style="background: #5fcf80;"><i class="bx bx-user"></i> <span>Gestion des utilisateurs</span></a></li>
+        <li><a href="/module" style="background: #5fcf80;"><i class="fa fa-copy"></i> <span>Gestion de module</span></a></li>
+        <li><a href="/matiere" style="background: #5fcf80;"><i class="fa fa-book"></i> <span>Gestion de matieres</span></a></li>
+         <li><a href="/note" style="background: #5fcf80;"><i class="fa fa-clipboard"></i> <span>Gestion de note</span></a></li>
+          <li><a href="/resultat" style="background: #5fcf80;"><i class="fa fa-mortar-board"></i> <span>Gestion de Résultat</span></a></li>
+          <li><a href="/logout" style="background: #5fcf80;"><i class="fa fa-sign-out"></i> <span>Déconnecter</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+{% endif %}
+
+{% if user == 'moniteur' %}
+    <nav class="nav-menu" style="width: 20%;margin-left: 20px;">
+      <ul>
+        <li class="active"><a href="/profile" style="background: #5fcf80;"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+         <li><a href="/manage_user" style="background: #5fcf80;"><i class="bx bx-user"></i> <span>Gestion des utilisateurs</span></a></li>
+        <li><a href="/etudiant" style="background: #5fcf80;"><i class="fa fa-institution"></i> <span>Gestion de classe</span></a></li>
+        <li><a href="/module" style="background: #5fcf80;"><i class="fa fa-copy"></i> <span>Gestion de module</span></a></li>
+        <li><a href="/matiere" style="background: #5fcf80;"><i class="fa fa-book"></i> <span>Gestion de matieres</span></a></li>
+         <li><a href="/note" style="background: #5fcf80;"><i class="fa fa-clipboard"></i> <span>Gestion de note</span></a></li>
+          <li><a href="/resultat" style="background: #5fcf80;"><i class="fa fa-mortar-board"></i> <span>Gestion de Résultat</span></a></li>
+          <li><a href="/logout" style="background: #5fcf80;"><i class="fa fa-sign-out"></i> <span>Déconnecter</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+{% endif %}
+
+
+{% if user == 'etudiant' %}
+    <nav class="nav-menu" style="width: 20%;margin-left: 20px;">
+      <ul>
+        <li class="active"><a href="/profile" style="background: #5fcf80;"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+         <li><a href="/manage_user" style="background: #5fcf80;"><i class="bx bx-user"></i> <span>Gestion des utilisateurs</span></a></li>
+        <li><a href="/module" style="background: #5fcf80;"><i class="fa fa-copy"></i> <span>Gestion de module</span></a></li>
+        <li><a href="/matiere" style="background: #5fcf80;"><i class="fa fa-book"></i> <span>Gestion de matieres</span></a></li>
+         <li><a href="/note" style="background: #5fcf80;"><i class="fa fa-clipboard"></i> <span>Gestion de note</span></a></li>
+          <li><a href="/resultat" style="background: #5fcf80;"><i class="fa fa-mortar-board"></i> <span>Gestion de Résultat</span></a></li>
+          <li><a href="/logout" style="background: #5fcf80;"><i class="fa fa-sign-out"></i> <span>Déconnecter</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+{% endif %}
+
+  </header><!-- End Header -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>L'education</h1>
+      <h2>L'arme la plus puissante pour changer le monde</h2>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  </main>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Hero Section ======= -->
+
+
+  <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Education</span></strong>. All Rights Reserved
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://twitter.com/jouhainaa_nasri" class="twitter"  style="background: #5fcf80;"><i class="bx bxl-twitter" ></i></a>
+        <a href="https://www.facebook.com/maite.perroni1234" class="facebook"  style="background: #5fcf80;"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/jouhainaa_nasri1/" class="instagram"  style="background: #5fcf80;"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/jouhaina-nasri-3b9442168/" class="linkedin"  style="background: #5fcf80;"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top" style="background: #5fcf80;"><i class="bx bx-up-arrow-alt"></i></a>
+  <div id="preloader"></div>
+
+  <script src="{{ url_for('static',filename='assets1/vendor/jquery/jquery.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/jquery.easing/jquery.easing.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/php-email-form/validate.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/waypoints/jquery.waypoints.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/counterup/counterup.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/isotope-layout/isotope.pkgd.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/venobox/venobox.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/owl.carousel/owl.carousel.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/typed.js/typed.min.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/vendor/aos/aos.js') }}"> </script>
+  <script src="{{ url_for('static',filename='assets1/js/main.js') }}"> </script>
+</body>
+
+</html>
