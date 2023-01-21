@@ -1,8 +1,9 @@
-"# Application-gestion-des-notes" 
+# Application-gestion-des-notes
 ---
 
+## Langages
 * Python
 * Html
 * CSS
 * Javascript
-* UML
+
