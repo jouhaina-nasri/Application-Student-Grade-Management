@@ -1,4 +1,4 @@
-# Application-gestion-des-notes
+# Application Gestion des notes
 ---
 
 ## Langages
