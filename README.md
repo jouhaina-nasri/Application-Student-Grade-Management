@@ -1,4 +1,4 @@
-# Application Gestion des notes
+# Application Student Grade Management
 ---
 
 ## Langages
