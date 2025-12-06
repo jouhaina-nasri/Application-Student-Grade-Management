@@ -1,0 +1,293 @@
+{% include "header.html" %}
+{% block body %}
+
+<!-- Breadcrumb -->
+<div class="row align-items-center py-4">
+  <ol class="breadcrumb breadcrumb-links breadcrumb-dark mx-auto">
+    <li class="breadcrumb-item">
+      <a href="{{ url_for('auth.profile') }}" class="aaa" style="color: #5fcf80;">
+        <i class="bx bx-home"></i>
+        <strong>Home</strong>
+      </a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{{ url_for('classes.students_list') }}" class="aaa" style="color: #5fcf80;">
+        <strong>Student Management</strong>
+      </a>
+    </li>
+  </ol>
+</div>
+
+<br>
+
+<section class="d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- Header + Add button -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="mb-0">Student Assignments</h2>
+          <button type="button"
+                  class="btn btn-success"
+                  data-toggle="modal"
+                  data-target="#addStudentModal">
+            Assign to a Class <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-success alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Students table -->
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Student CIN</th>
+              <th>Class Reference</th>
+              <th>Level</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for row in etudiant %}
+            <tr>
+              <td>{{ row.0 }}</td>
+              <td>{{ row.1 }}</td>
+              <td>{{ row.2 }}</td>
+              <td>
+                <!-- Edit button -->
+                <a href="#"
+                   class="btn btn-sm btn-outline-primary"
+                   data-toggle="modal"
+                   data-target="#modalEdit{{ row.0 }}"
+                   title="Edit assignment">
+                  <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                </a>
+
+                <!-- Delete button -->
+                <a href="{{ url_for('classes.delete_student', cin=row.0) }}"
+                   class="btn btn-sm btn-outline-danger"
+                   title="Remove assignment"
+                   onclick="return confirm('Are you sure you want to remove this student\'s assignment?');">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+
+            <!-- Edit Modal -->
+            <div id="modalEdit{{ row.0 }}"
+                 class="modal fade"
+                 role="dialog"
+                 aria-labelledby="editStudentLabel{{ row.0 }}"
+                 aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="editStudentLabel{{ row.0 }}">Edit Assignment</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <form action="{{ url_for('classes.update_student') }}" method="POST">
+                      <div class="form-group">
+                        <label for="cin{{ row.0 }}">Student CIN:</label>
+                        <input id="cin{{ row.0 }}"
+                               type="number"
+                               class="form-control"
+                               name="id"
+                               value="{{ row.0 }}"
+                               readonly>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="classRef{{ row.0 }}">Class Reference:</label>
+                        <input id="classRef{{ row.0 }}"
+                               type="number"
+                               class="form-control"
+                               name="refclasse"
+                               value="{{ row.1 }}">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="level{{ row.0 }}">Level:</label>
+                        <input id="level{{ row.0 }}"
+                               type="number"
+                               class="form-control"
+                               name="niveau"
+                               value="{{ row.2 }}">
+                      </div>
+
+                      <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                      Close
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- Add Modal -->
+      <div id="addStudentModal"
+           class="modal fade"
+           role="dialog"
+           aria-labelledby="addStudentLabel"
+           aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h4 class="modal-title" id="addStudentLabel">Assign a Student to a Class</h4>
+              <button type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form action="{{ url_for('classes.insert_student') }}" method="POST">
+                <div class="form-group">
+                  <label for="newCin">Student CIN:</label>
+                  <input id="newCin"
+                         type="number"
+                         class="form-control"
+                         name="id"
+                         required>
+                </div>
+
+                <div class="form-group">
+                  <label for="newClassRef">Class Reference:</label>
+                  <input id="newClassRef"
+                         type="number"
+                         class="form-control"
+                         name="refclasse"
+                         required>
+                </div>
+
+                <div class="form-group">
+                  <label for="newLevel">Level:</label>
+                  <input id="newLevel"
+                         type="number"
+                         class="form-control"
+                         name="niveau"
+                         required>
+                </div>
+
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal">
+                Close
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<main id="main"></main>
+
+<!-- Spacing -->
+<br><br><br><br><br><br>
+
+<!-- Mobile Navigation Toggle -->
+<button type="button" class="mobile-nav-toggle d-xl-none">
+  <i class="icofont-navigation-menu"></i>
+</button>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="mr-md-auto text-center text-md-left">
+      <div class="copyright">
+        &copy; Copyright
+        <strong><span>Education</span></strong>. All Rights Reserved
+      </div>
+    </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <a href="https://twitter.com/jouhainaa_nasri"
+         class="twitter"
+         style="background: #5fcf80;">
+        <i class="bx bxl-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/maite.perroni1234"
+         class="facebook"
+         style="background: #5fcf80;">
+        <i class="bx bxl-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/jouhainaa_nasri1/"
+         class="instagram"
+         style="background: #5fcf80;">
+        <i class="bx bxl-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jouhaina-nasri-3b9442168/"
+         class="linkedin"
+         style="background: #5fcf80;">
+        <i class="bx bxl-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top" style="background: #5fcf80;">
+  <i class="bx bx-up-arrow-alt"></i>
+</a>
+
+<div id="preloader"></div>
+
+{% endblock %}
+
+<!-- Scripts -->
+<script src="{{ url_for('static',filename='assets1/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/counterup/counterup.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/venobox/venobox.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+script src="{{ url_for('static',filename='assets1/vendor/typed.js/typed.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static',filename='assets1/js/main.js') }}"></script>

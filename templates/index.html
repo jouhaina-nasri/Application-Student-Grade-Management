@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Grade Management</title>
+    <meta name="description" content="Education platform for managing users, classes, subjects, modules, and grades." />
+    <meta name="keywords" content="education, grades, students, classes, subjects, modules" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/icofont/icofont.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}"
+    />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo mr-auto">
+          <a href="{{ url_for('main.index') }}">Education</a>
+        </h1>
+
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li class="active">
+              <a href="{{ url_for('main.index') }}">Home</a>
+            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar navbar-default navbar-expand-lg navbar-light">
+          <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <ul class="nav navbar-nav navbar-right ml-auto">
+              <li class="nav-item">
+                <a class="get-started-btn scrollto" href="{{ url_for('auth.login') }}">Log in</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-content-center align-items-center">
+      <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+        <h1>Education</h1>
+        <h2>The most powerful weapon to change the world</h2>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>About</h2>
+          </div>
+
+          <div class="row">
+            <div
+              class="col-lg-6 order-1 order-lg-2"
+              data-aos="fade-left"
+              data-aos-delay="100"
+            >
+              <img
+                src="{{ url_for('static', filename='assets/img/about.jpg') }}"
+                class="img-fluid"
+                alt="About the platform"
+              />
+            </div>
+
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+              <h3>
+                Our goal is to fully support our students by offering the following services:
+              </h3>
+              <ul>
+                <li>
+                  <i class="icofont-check-circled"></i>User management
+                </li>
+                <li>
+                  <i class="icofont-check-circled"></i>Class management
+                </li>
+                <li>
+                  <i class="icofont-check-circled"></i>Subject management
+                </li>
+                <li>
+                  <i class="icofont-check-circled"></i>Module management
+                </li>
+                <li>
+                  <i class="icofont-check-circled"></i>View grades
+                </li>
+                <li>
+                  <i class="icofont-check-circled"></i>View results
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Section -->
+
+      <!-- ======= Why Us / Services Section ======= -->
+      <section id="services" class="why-us">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Services</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="content">
+                <h3>Platform Services:</h3>
+                <p>
+                  This platform centralizes key academic features to simplify administration and
+                  improve the student experience.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-8 d-flex align-items-stretch"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="icon-boxes d-flex flex-column justify-content-center">
+                <div class="row">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Services Section -->
+
+      <!-- ======= Features Section ======= -->
+      <section id="features" class="features">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Main Features</h2>
+          </div>
+
+          <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-lg-3 col-md-4">
+              <div class="icon-box">
+                <i class="ri-folder-user-line" style="color: #ffbb2c;"></i>
+                <h3><a href="#">User Management</a></h3>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+              <div class="icon-box">
+                <i class="ri-contacts-fill" style="color: #5578ff;"></i>
+                <h3><a href="#">Teacher Contact</a></h3>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+              <div class="icon-box">
+                <i class="ri-sticky-note-line" style="color: #e80368;"></i>
+                <h3><a href="#">Subject Management</a></h3>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+              <div class="icon-box">
+                <i class="ri-sticky-note-line" style="color: #e361ff;"></i>
+                <h3><a href="#">Grades</a></h3>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mt-4">
+              <div class="icon-box">
+                <i class="ri-award-fill" style="color: #47aeff;"></i>
+                <h3><a href="#">Results</a></h3>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mt-4">
+              <div class="icon-box">
+                <i class="ri-profile-line" style="color: #ffa76e;"></i>
+                <h3><a href="#">Profile Management</a></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Features Section -->
+
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Contact</h2>
+          </div>
+
+          <div style="width: 100%;">
+            <iframe
+              width="100%"
+              height="270"
+              src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Manouba%20Tunis%20(Linedata)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe>
+          </div>
+
+          <br />
+
+          <div class="row mt-5">
+            <div class="col-lg-4">
+              <div class="info">
+                <div class="address">
+                  <i class="icofont-google-map"></i>
+                  <h4>Location:</h4>
+                  <p>Tunis</p>
+                </div>
+
+                <div class="email">
+                  <i class="icofont-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>jouhainanasri50@gmail.com</p>
+                </div>
+
+                <div class="phone">
+                  <i class="icofont-phone"></i>
+                  <h4>Phone Number:</h4>
+                  <p>+216 50 908 536</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+              <form action="" method="post" role="form" class="php-email-form">
+                <div class="form-row">
+                  <div class="col-md-6 form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      id="name"
+                      placeholder="Your Name"
+                      data-rule="minlen:4"
+                      data-msg="Please enter at least 4 characters"
+                    />
+                    <div class="validate"></div>
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="Your Email"
+                      data-rule="email"
+                      data-msg="Please enter a valid email address"
+                    />
+                    <div class="validate"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="subject"
+                    id="subject"
+                    placeholder="Subject"
+                    data-rule="minlen:4"
+                    data-msg="Please enter at least 4 characters for the subject"
+                  />
+                  <div class="validate"></div>
+                </div>
+
+                <div class="form-group">
+                  <textarea
+                    class="form-control"
+                    name="message"
+                    rows="5"
+                    data-rule="required"
+                    data-msg="Please write a message"
+                    placeholder="Message"
+                  ></textarea>
+                  <div class="validate"></div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Contact Section -->
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="container d-md-flex py-4">
+        <div class="mr-md-auto text-center text-md-left">
+          <div class="copyright">
+            &copy; Copyright
+            <strong><span>Education</span></strong>. All Rights Reserved
+          </div>
+        </div>
+
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+          <a href="https://twitter.com/jouhainaa_nasri" class="twitter">
+            <i class="bx bxl-twitter"></i>
+          </a>
+          <a href="https://www.facebook.com/maite.perroni1234" class="facebook">
+            <i class="bx bxl-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/jouhainaa_nasri1/" class="instagram">
+            <i class="bx bxl-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jouhaina-nasri-3b9442168/" class="linkedin">
+            <i class="bx bxl-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top">
+      <i class="bx bx-up-arrow-alt"></i>
+    </a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+  </body>
+</html>

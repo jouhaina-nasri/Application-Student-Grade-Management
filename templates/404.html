@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Grade Management | 404 Not Found</title>
+  <meta name="description" content="The page you are looking for could not be found." />
+  <meta name="keywords" content="404, page not found, error" />
+
+  <link rel="icon" href="{{ url_for('static', filename='assets1/img/favicon.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets1/img/apple-touch-icon.png') }}">
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/icofont/icofont.min.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/boxicons/css/boxicons.min.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/venobox/venobox.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/owl.carousel/assets/owl.carousel.min.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/vendor/aos/aos.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='assets1/css/style.css') }}">
+
+  <style>
+    :root {
+      --primary-color: #5fcf80;
+      --primary-hover: #3ac162;
+      --text-color: #37423b;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: var(--text-color);
+      margin: 0;
+    }
+
+    a {
+      color: var(--primary-color);
+    }
+
+    a:hover {
+      color: #86db9f;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Raleway", sans-serif;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      display: none;
+      right: 15px;
+      bottom: 15px;
+      z-index: 99999;
+    }
+
+    .back-to-top i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: #fff;
+      transition: all 0.4s;
+    }
+
+    .back-to-top i:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    #preloader::before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+      border: 6px solid var(--primary-color);
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: animate-preloader 1s linear infinite;
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      [data-aos-delay] {
+        transition-delay: 0 !important;
+      }
+    }
+
+    /* Hero 404 section */
+    #hero {
+      width: 100%;
+      height: 100vh;
+      background: #f5f6f7;
+      text-align: center;
+    }
+
+    #hero .container {
+      padding-top: 72px;
+    }
+
+    @media (max-width: 992px) {
+      #hero .container {
+        padding-top: 62px;
+      }
+    }
+
+    #hero h1 {
+      margin: 0;
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      font-family: "Poppins", sans-serif;
+    }
+
+    #hero h2 {
+      margin: 15px 0 0 0;
+      font-size: 22px;
+      color: #555;
+    }
+
+    #hero p {
+      margin-top: 20px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .btn-primary-custom {
+      margin-top: 30px;
+      padding: 10px 30px;
+      border-radius: 50px;
+      border: none;
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: 500;
+      font-size: 15px;
+      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary-custom:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+
+    /* Footer */
+    #footer {
+      color: #37423b;
+      font-size: 14px;
+      background: #eef0ef;
+    }
+
+    #footer .footer-top {
+      padding: 30px 0;
+    }
+
+    #footer .copyright {
+      font-size: 13px;
+    }
+
+    #footer .social-links a {
+      font-size: 18px;
+      display: inline-block;
+      background: var(--primary-color);
+      color: #fff;
+      line-height: 1;
+      padding: 8px 0;
+      margin-right: 4px;
+      border-radius: 50%;
+      text-align: center;
+      width: 36px;
+      height: 36px;
+      transition: 0.3s;
+    }
+
+    #footer .social-links a:hover {
+      background: var(--primary-hover);
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header (empty but kept for layout consistency) -->
+  <header id="header" class="fixed-top">
+    <nav class="nav-menu d-none d-lg-block">
+      <!-- Add navigation items here if needed -->
+    </nav>
+  </header>
+
+  <!-- 404 Hero Section -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Oops, 404!</h1>
+      <h2>We can’t find the page you were looking for.</h2>
+      <p>
+        The page may have been moved, deleted, or the URL might be incorrect.
+      </p>
+      <a href="{{ url_for('index') }}" class="btn-primary-custom">
+        <i class="bx bx-home"></i>
+        Back to Home
+      </a>
+    </div>
+  </section>
+
+  <main id="main"></main>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container d-md-flex py-4">
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright
+          <strong><span>Education</span></strong>. All Rights Reserved
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://twitter.com/jouhainaa_nasri" class="twitter">
+          <i class="bx bxl-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/maite.perroni1234" class="facebook">
+          <i class="bx bxl-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/jouhainaa_nasri1/" class="instagram">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/jouhaina-nasri-3b9442168/" class="linkedin">
+          <i class="bx bxl-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top">
+    <i class="bx bx-up-arrow-alt"></i>
+  </a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets1/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/counterup/counterup.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/venobox/venobox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/typed.js/typed.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets1/js/main.js') }}"></script>
+</body>
+
+</html>
