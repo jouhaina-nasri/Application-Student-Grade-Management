@@ -8,21 +8,7 @@ A simple Flask web application that includes:
 - Bootstrap UI + dynamic modals
 - Templates using Jinja2
 - MySQL/PostgreSQL/SQLite support
-
----
-
-## 🚀 Project Structure
-
-FLASK/
-│── app/ 
-│── static/ 
-│── templates/
-│── run.py 
-│── requirements.txt
-│── .gitignore
-│── README.md
-
-
+  
 ---
 
 ## ▶️ Running the Project
